@@ -27,40 +27,23 @@ export const getSimilarityScoreBetweenLocationIdLists = (
   const orderedList1 = list1.sort();
   const orderedList2 = list2.sort();
 
-  let list1Index = 0;
-  const list2Index = 0;
+  orderedList1.forEach((listItem1) => {
+    let similarityMultiplier = 0;
 
-  let currentList1Value = orderedList1[list1Index];
-  const currentList2Value = orderedList2[list2Index];
+    orderedList2.forEach((listItem2) => {
+      if (listItem1 === listItem2) {
+        similarityMultiplier++;
+      }
+    });
 
-  let previousSimilarityScore = 0;
-
-  orderedList1.forEach((listItem1, index) => {
-    if (currentList1Value)
-
-    list1Index = index;
-    currentList1Value = listItem1;
-
-    if (currentList1Value > currentList2Value) {
-      return;
-    }
-
-    while (currentList1Value <= )
-
-    // let n = 0;
-
-    // while (n < 3) {
-    //   n++;
-    // }
-
-    // console.log(n);
-    // // Expected output: 3
+    const similarityScore = listItem1 * similarityMultiplier;
+    similarityScoreBetweenLocationIdLists += similarityScore;
   });
 
   return similarityScoreBetweenLocationIdLists;
 };
 
-const getDay01Response = (): number | undefined => {
+const getDay01Response = (): number[] | undefined => {
   const input = fs.readFileSync('./src/day01.txt', 'utf-8');
   const inputLists = parseInputToLists(input, '   ');
 
@@ -74,8 +57,22 @@ const getDay01Response = (): number | undefined => {
 
   const totalDistanceBetweenLocationIdLists =
     getTotalDistanceBetweenLocationIdLists(list1, list2);
+  const similarityScoreBetweenLocationIdLists =
+    getSimilarityScoreBetweenLocationIdLists(list1, list2);
 
-  return totalDistanceBetweenLocationIdLists;
+  return [
+    totalDistanceBetweenLocationIdLists,
+    similarityScoreBetweenLocationIdLists,
+  ];
 };
 
-console.log('day01Response', getDay01Response());
+const response = getDay01Response();
+
+console.log(
+  'day01Response:totalDistanceBetweenLocationIdLists ',
+  response ? response[0] : undefined,
+);
+console.log(
+  'day01Response:similarityScoreBetweenLocationIdLists ',
+  response ? response[1] : undefined,
+);
