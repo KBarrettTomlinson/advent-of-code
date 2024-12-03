@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "day01": "npx ts-node ./src/advent-of-code/day01/day01.ts",
+    "day02": "npx ts-node ./src/advent-of-code/day02/day02.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
