@@ -5,6 +5,7 @@
   "scripts": {
     "day01": "npx ts-node ./src/advent-of-code/day01/day01.ts",
     "day02": "npx ts-node ./src/advent-of-code/day02/day02.ts",
+    "day03": "npx ts-node ./src/advent-of-code/day03/day03.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",

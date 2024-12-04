@@ -8,6 +8,7 @@ import {
   MIN_THRESHOLD,
   MAX_THRESHOLD,
   getNumberOfSafeReports,
+  getIsDampenedReportSafe,
 } from './day02';
 
 describe('getParsedInput', () => {
@@ -197,6 +198,40 @@ describe('getIsReportSafe', () => {
     const testReport6 = [1, 3, 6, 7, 9];
     const expected6 = true;
     const actual6 = getIsReportSafe(testReport6);
+    expect(actual6).toEqual(expected6);
+  });
+});
+
+describe('getIsDampenedReportSafe', () => {
+  it(`should apply dampener to see if that will allow the report to pass`, () => {
+    const testReport1 = [7, 6, 4, 2, 1];
+    const expected1 = true;
+    const actual1 = getIsDampenedReportSafe(testReport1);
+    expect(actual1).toEqual(expected1);
+
+    const testReport2 = [1, 2, 7, 8, 9];
+    const expected2 = false;
+    const actual2 = getIsDampenedReportSafe(testReport2);
+    expect(actual2).toEqual(expected2);
+
+    const testReport3 = [9, 7, 6, 2, 1];
+    const expected3 = false;
+    const actual3 = getIsDampenedReportSafe(testReport3);
+    expect(actual3).toEqual(expected3);
+
+    const testReport4 = [1, 3, 2, 4, 5];
+    const expected4 = true;
+    const actual4 = getIsDampenedReportSafe(testReport4);
+    expect(actual4).toEqual(expected4);
+
+    const testReport5 = [8, 6, 4, 4, 1];
+    const expected5 = true;
+    const actual5 = getIsDampenedReportSafe(testReport5);
+    expect(actual5).toEqual(expected5);
+
+    const testReport6 = [1, 3, 6, 7, 9];
+    const expected6 = true;
+    const actual6 = getIsDampenedReportSafe(testReport6);
     expect(actual6).toEqual(expected6);
   });
 });

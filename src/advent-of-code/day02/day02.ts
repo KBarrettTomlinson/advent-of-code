@@ -101,6 +101,21 @@ export const getNumberOfSafeReports = (safeReportList: boolean[]): number => {
   return safeReportList.filter((safeReport) => !!safeReport).length;
 };
 
+export const getIsDampenedReportSafe = (report: number[]): boolean => {
+  let isDampenedReportSafe = false;
+
+  report.forEach((_, index) => {
+    if (isDampenedReportSafe) {
+      return;
+    }
+    const dampenedReport = [...report];
+    dampenedReport.splice(index, 1);
+    isDampenedReportSafe = getIsReportSafe(dampenedReport);
+  });
+
+  return isDampenedReportSafe;
+};
+
 const getDay02Response = () => {
   const input = fs.readFileSync(
     './src/advent-of-code/day02/day02.txt',
@@ -108,7 +123,11 @@ const getDay02Response = () => {
   );
   const reports = getParsedInput(input);
   const safeReportList = reports.map((report) => {
-    return getIsReportSafe(report);
+    let isReportSafe = getIsReportSafe(report);
+    if (!isReportSafe) {
+      isReportSafe = getIsDampenedReportSafe(report);
+    }
+    return isReportSafe;
   });
 
   const numberOfSafeReports = getNumberOfSafeReports(safeReportList);

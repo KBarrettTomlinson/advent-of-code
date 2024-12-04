@@ -1,5 +1,13 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "cSpell.words": ["tseslint"]
+  "cSpell.words": [
+    "mulwhen",
+    "mulwhere",
+    "mulwho",
+    "mulwhy",
+    "perlfrom",
+    "tseslint",
+    "xmul"
+  ]
 }
